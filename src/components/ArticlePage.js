@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+/*import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { makeEmojiList } from "../utils";
 
@@ -41,4 +41,24 @@ function ArticlePage() {
   );
 }
 
+export default ArticlePage;*/
+
+import React from "react";
+import { useParams } from "react-router-dom";
+import useDocumentTitle from "../hooks/useDocumentTitle";
+import useQuery from "../hooks/useQuery";
+
+function ArticlePage() {
+  // Fetch data for a post
+  const { id } = useParams();
+  const { data: post, isLoaded } = useQuery(`http://localhost:4000/posts/${id}`);
+
+  // Set the document title
+  const pageTitle = post ? `Underreacted | ${post.title}` : "Underreacted";
+  useDocumentTitle(pageTitle);
+
+  // ... render the component
+}
+
 export default ArticlePage;
+

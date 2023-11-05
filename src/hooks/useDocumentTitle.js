@@ -1,3 +1,13 @@
+/*import { useEffect } from "react";
+
+function useDocumentTitle(pageTitle) {
+  useEffect(() => {
+    document.title = pageTitle;
+  }, [pageTitle]);
+}
+
+export default useDocumentTitle;*/
+
 import { useEffect } from "react";
 
 function useDocumentTitle(pageTitle) {
@@ -7,3 +17,4 @@ function useDocumentTitle(pageTitle) {
 }
 
 export default useDocumentTitle;
+

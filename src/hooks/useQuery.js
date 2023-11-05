@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+/*import { useEffect, useState } from "react";
 
 // take in the url
 function useQuery(url) {
@@ -22,4 +22,30 @@ function useQuery(url) {
   return { data, isLoaded };
 }
 
+export default useQuery;*/
+
+
+import { useState, useEffect } from "react";
+
+function useQuery(url) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    setIsLoaded(false);
+    fetch(url)
+      .then((r) => r.json())
+      .then((data) => {
+        setData(data);
+        setIsLoaded(true);
+      })
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
+      });
+  }, [url]);
+
+  return { data, isLoaded };
+}
+
 export default useQuery;
+
